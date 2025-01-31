@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.1" />
+  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Logic\FireAlarmConfigTool.Logic.Http.Client\src\FireAlarmConfigTool.Logic.Http.Client\FireAlarmConfigTool.Logic.Http.Client.csproj" />
+		<ProjectReference Include="..\..\Logic\FireAlarmConfigTool.Logic.Lib\FireAlarmConfigTool.Logic.Lib.csproj" />
+	</ItemGroup>
+
+</Project>

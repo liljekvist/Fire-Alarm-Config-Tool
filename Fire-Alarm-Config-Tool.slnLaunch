@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Application and API",
+    "Projects": [
+      {
+        "Path": "UI\\FireAlarmConfigTool.Application\\FireAlarmConfigTool.Application.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Logic\\FireAlarmConfigTool.Logic.Api\\src\\FireAlarmConfigTool.Logic.Api\\FireAlarmConfigTool.Logic.Api.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

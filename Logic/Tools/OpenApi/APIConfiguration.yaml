@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  title: Fire Alarm Config Tool API
+  version: '1.0.0'
+servers:
+  - url: http://localhost:8080/
+paths:
+  /test:
+    get:
+      summary: Test endpoint
+      description: Returns a greeting that includes the provided number.
+      parameters:
+        - name: num
+          in: query
+          required: true
+          description: A number to include in the greeting
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Hello world (5)"
