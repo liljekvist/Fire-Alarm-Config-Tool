@@ -2,6 +2,7 @@ using FireAlarmConfigTool.Logic.Http.Client.Api;
 using FireAlarmConfigTool.Web.Components;
 using FireAlarmConfigTool.Ui.Lib.Services;
 using FireAlarmConfigTool.Web.Services;
+using FireAlarmConfigTool.Ui.Lib.Distribution;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,8 @@ builder.Services.AddRazorComponents()
 
 // Add device-specific services used by the FireAlarmConfigTool.Shared project
 builder.Services.AddSingleton<IFormFactor, FormFactor>();
-builder.Services.AddSingleton<IDefaultApi, DefaultApi>();
+builder.Services.AddSingleton<IDefaultApi>(api => new DefaultApi("http://127.0.0.1:8080"));
+builder.Services.AddSingleton<ITest, Test>();
 
 var app = builder.Build();
 
