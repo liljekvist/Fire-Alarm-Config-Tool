@@ -1,3 +1,4 @@
+using FireAlarmConfigTool.Logic.Http.Client.Api;
 using FireAlarmConfigTool.Web.Components;
 using FireAlarmConfigTool.Ui.Lib.Services;
 using FireAlarmConfigTool.Web.Services;
@@ -10,6 +11,7 @@ builder.Services.AddRazorComponents()
 
 // Add device-specific services used by the FireAlarmConfigTool.Shared project
 builder.Services.AddSingleton<IFormFactor, FormFactor>();
+builder.Services.AddSingleton<IDefaultApi, DefaultApi>();
 
 var app = builder.Build();
 

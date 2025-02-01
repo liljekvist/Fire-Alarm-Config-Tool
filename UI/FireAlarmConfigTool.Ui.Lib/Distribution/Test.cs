@@ -1,44 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using FireAlarmConfigTool.Logic.Http.Client.Api;
+using Microsoft.Extensions.Logging;
 using LogicTest = FireAlarmConfigTool.Logic.Lib.Test;
-
 
 namespace FireAlarmConfigTool.Ui.Lib.Distribution
 {
-    static public class Test
+    public class Test : ITest
     {
-        static bool local = true;
-        static public String TestMethod()
+        private readonly ILogger<Test> _logger;
+        private bool _local = true;
+        private readonly IDefaultApi _api;
+
+        // Constructor to inject dependencies
+        public Test(IDefaultApi api, ILogger<Test> logger)
         {
-            String result;
-            if (local)
+            _api = api;
+            _logger = logger;
+        }
+
+        public async Task<string> TestMethod()
+        {
+            string result;
+            // response time mesurment
+            try
             {
-                result = LogicTest.Test.testFunction(11000);
-                Console.WriteLine(result);
+                if(_local)
+                {
+                    result = LogicTest.Test.testFunction(10101010);
+                }
+                else
+                {
+                    // Start the stopwatch
+                    var watch = Stopwatch.StartNew();
+                    result = await _api.TestGetAsync(1111111111);
+                    // Stop the stopwatch
+                    watch.Stop();
+                    result += " Response time: " + watch.ElapsedMilliseconds + "ms";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                DefaultApi api = new DefaultApi();
-                result = api.TestGet(1111111111);
-                Console.WriteLine(result);
+                _logger.LogError(ex, "An error occurred in TestMethod.");
+                throw;
             }
+
+            _logger.LogInformation("Result: {Result}", result);
             return result;
         }
 
-        static public void Switch()
+        public void Switch()
         {
-            if(local)
-            {
-                local = false;
-            }
-            else
-            {
-                local = true;
-            }
+            _local = !_local;
+            _logger.LogInformation("Switched to {Mode} mode.", _local ? "local" : "API");
         }
     }
 }

@@ -18,7 +18,7 @@ using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Newtonsoft.Json;
 using FireAlarmConfigTool.Logic.Api.Attributes;
-using TestTest = FireAlarmConfigTool.Logic.Lib;
+using FireAlarmConfigTool.Logic.Lib.Test;
 
 namespace FireAlarmConfigTool.Logic.Api.Controllers
 { 
@@ -45,7 +45,7 @@ namespace FireAlarmConfigTool.Logic.Api.Controllers
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(string));
             string exampleJson = null;
-            exampleJson = "\"" + TestTest.Test.Test.testFunction(num) + "\"";
+            exampleJson = "\"" + Test.testFunction(num) + "\"";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<string>(exampleJson)

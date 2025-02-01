@@ -17,5 +17,8 @@
 		<ProjectReference Include="..\..\Logic\FireAlarmConfigTool.Logic.Http.Client\src\FireAlarmConfigTool.Logic.Http.Client\FireAlarmConfigTool.Logic.Http.Client.csproj" />
 		<ProjectReference Include="..\..\Logic\FireAlarmConfigTool.Logic.Lib\FireAlarmConfigTool.Logic.Lib.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Distribution\Services\" />
+	</ItemGroup>
 
 </Project>

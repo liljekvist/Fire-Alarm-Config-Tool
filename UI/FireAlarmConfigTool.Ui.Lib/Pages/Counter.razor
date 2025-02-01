@@ -1,23 +1,22 @@
 ﻿@page "/counter"
 @using FireAlarmConfigTool.Ui.Lib.Distribution
+@inject ITest Test
 
 <PageTitle>Counter</PageTitle>
 
 <h1>Counter</h1>
 
-<p role="status">Current Message: @Message</p>
+<p role="status">Current Message: @_message</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 <button class="btn btn-primary" @onclick="ModeSwitch">Switch Mode</button>
 
 @code {
-    private String Message = "";
+    private String _message = "";
 
-    private void IncrementCount()
+    private async Task IncrementCount()
     {
-
-        Message = Test.TestMethod();
-        //currentCount++;
+        await Test.TestMethod().ContinueWith((str) => {_message = str.Result;});
     }
 
 	private void ModeSwitch()

@@ -8,9 +8,8 @@ namespace FireAlarmConfigTool.Logic.Lib.Test
 {
     public class Test
     {
-        public static String testFunction(int num)
+        public static string testFunction(int num)
         {
-
             return "Hello World (" + num + ")";
         }
     }
